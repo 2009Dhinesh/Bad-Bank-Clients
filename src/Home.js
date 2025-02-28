@@ -9,7 +9,6 @@ import SubMain from './SubBadMain'
 
 export default function Home(){
 
-        // const arr = [img1 , img2 ,img3 ,img4 ,img5]
         const content = [
             {
             id:'1',
