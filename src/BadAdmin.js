@@ -7,8 +7,6 @@ function BasicExample() {
   return (<>
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container style={{position:"absolute" , top:'-500%' , left :'35%' ,fontSize:'20px'}}>
-        {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
