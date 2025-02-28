@@ -1,5 +1,3 @@
-// import UserContext from './context';
-// import { useContext, useState } from 'react';
 import {Button } from "react-bootstrap";
 import deps from './cash.jpg';
 import { useState , useEffect} from 'react'
@@ -11,23 +9,7 @@ import Load from "./BadMoney";
 import SubMain from './SubBadMain'
 
 export default function Cashback(){
-    // let users=useContext(UserContext);
-    // let n = users.users.length;
-    // let [bal,setBal]=useState(users.users[n-1].amount)
-    // let [dep,setDep]=useState(0)
-    // function handleSubmit(e){
-    //     e.preventDefault()
-    //     let deposit=Number(dep)
-    //     if(bal-deposit < 0){
-    //         alert("Invalid amount")
-    //     }
-    //     else{
-    //         setBal(bal-deposit)
-    //     }
-    // }
-    // users.users[n-1].amount=bal
-
-
+ 
     const [dep,setDep]=useState(0)
     const [userId,setUserId]=useState();
     const [data,setData]=useState([])
@@ -42,7 +24,7 @@ export default function Cashback(){
     
         useEffect(()=>{
         const fetchdata=async()=>{
-            await axios.get('http://localhost:3002/data').then((item)=>{setData(item.data)})
+            await axios.get('https://server-90ct.onrender.com/data').then((item)=>{setData(item.data)})
         };fetchdata()
         },[]);
     
@@ -84,15 +66,8 @@ export default function Cashback(){
         {(!data.find(item => item.userid === Number(userId) && item.password === password)) ? <div className="display-inner-span">y</div> : <div className="display-inner-span-two">y</div>}
     </div>
     <h1 style={{marginTop:'-2%' ,marginLeft:'5%'}}>Cashback</h1>
-    {/* <form action="" className='card-outer-cash' >
-        <input type="text"  placeholder='Enter your amount'/>
-        <Button type='submit' >Submit</Button>
-    </form> */}
-    {/* <h2 style={{marginTop:'2%'}}>Balance : {bal} </h2> */}
-
 
     <div className='containers'>
-        {/* <h2 style={{marginTop:'2%'}}>Balance : {bal} </h2> */}
         <Form noValidate    className='card-outer-cash' onSubmit={handleSubmit} id='form'>
         <Row className="mb-3">
             <Form.Group as={Col} md="13" controlId="validationCustom01">
