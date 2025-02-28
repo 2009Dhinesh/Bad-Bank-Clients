@@ -41,13 +41,10 @@ const handleSubmit = (event ,index) => {
                     setUpdate(1);  
                     if(emails ==="dhinesh@gmail.com" && passwords === "12345"){
                         setAll(<Admin />)
-                        console.log("Admin" , emails,passwords);
                     }
                 } else{
                     setUpdate(0);
                 }
-                
-                console.log("! email :" ,emails)
             }
 
             else{
@@ -67,10 +64,8 @@ const handleSubmit = (event ,index) => {
                 setShow(<SubMain />)
             }
         }
-        console.log(update)
     })
 };
-console.log(data)
 useEffect(() => {
 
     async function axiosProd(){
