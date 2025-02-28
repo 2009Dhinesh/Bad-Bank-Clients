@@ -26,7 +26,7 @@ function FormExample() {
         }
         
         let item = {fname:fname,lname:lname,email:email,password:password};
-        axios.post("http://localhost:3001/register" , item)
+        axios.post("https://server-90ct.onrender.com/register" , item)
 
         setValidated(true);
     };
