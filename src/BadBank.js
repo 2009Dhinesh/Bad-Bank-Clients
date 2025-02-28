@@ -14,9 +14,6 @@ import SplashCursor from './BankSplash'
 export default function Bad(){
 
 
-// let next = document.querySelector('.next')
-// let prev = document.querySelector('.prev')
-
 function handleClickNext(){
         let items = document.querySelectorAll('.item')
         document.querySelector('.slide').appendChild(items[0])
