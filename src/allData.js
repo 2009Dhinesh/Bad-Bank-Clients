@@ -1,36 +1,22 @@
-// import UserContext from './context';
-// import { useContext } from 'react';
 import { useState ,useEffect} from 'react';
 import axios from 'axios';
-// import { Button } from 'react-bootstrap';
 import { FaWindowClose } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import SubMain from './SubBadMain';
-// import Admin from './BadAdmin';
+
 
 
 export default function Alldata(){
-    // let users = useContext(UserContext)
-// console.log("hi",users.users[0].amount)
+
     const [products, setProducts] = useState([]);    
     let [editId, setEditId] = useState(null);
     let [formData, setFormData] = useState({ userid : "" ,name: "", email: "", password: "", amount: "" });
-    // const [dep,setDep]=useState(0)
-    // const [userId,setUserId]=useState();
-    // const [result , setResult] = useState() 
-
-    // useEffect(()=>{
-    //     const fetchdata=async()=>{
-    //         await axios.get('http://localhost:3002/data').then((item)=>{setData(item.data)})
-    //     };fetchdata()
-    //     },[]);
-
     
 useEffect(() => {
 
     async function axiosProd(){
-        const response = await axios('http://localhost:3002/data');
+        const response = await axios('https://server-90ct.onrender.com/data');
         setProducts(response.data)
     };
     axiosProd();
@@ -38,7 +24,7 @@ useEffect(() => {
 
     const handleClick = (index)=>{
         const deleteItem = products[index];
-        axios.delete(`http://localhost:3002/delete/${deleteItem._id}`).then(() => {
+        axios.delete(`https://server-90ct.onrender.com/delete/${deleteItem._id}`).then(() => {
         const updatedData = [...products];
         updatedData.splice(index, 1);
         setProducts(updatedData);
@@ -52,7 +38,7 @@ function handleEdit(item) {
 
     async function handleUpdate() {
         try {
-        await axios.put(`http://localhost:3002/update/${editId}`, formData);
+        await axios.put(`https://server-90ct.onrender.com/update/${editId}`, formData);
         setProducts(products.map((item) => (item._id === editId ? { ...item, ...formData } : item)));
         setEditId(null);
         alert("Updated successfully!");
@@ -67,7 +53,6 @@ console.log(products)
     
     return(<>
     <SubMain />
-    {/* <Admin /> */}
     <title>Dhisha Bank | All data</title>
 
     <h1 style={{marginTop:'-3%'}}>All data</h1>
@@ -84,12 +69,7 @@ console.log(products)
         </tr>
     </thead>
     <tbody>
-    {/* {users.users.map((item)=><tr>
-        <td>{item.name}</td>
-    <td>{item.email}</td>
-    <td>{item.password}</td>
-    <td>{item.amount}</td>
-    </tr>)} */}
+
     {products.map((item , index)=><tr>
         <td>{item.userid}</td>
         <td>{item.name}</td>
