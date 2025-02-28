@@ -1,5 +1,3 @@
-// import UserContext from './context';
-// import { useContext, useState } from 'react';
 import {Button } from "react-bootstrap"
 import deps from './deposit.jpg'
 import { useState , useEffect} from 'react'
@@ -12,16 +10,6 @@ import SubMain from './SubBadMain'
 
 export default function Deposit(){
 
-    // let users=useContext(UserContext)
-    // let n = users.users.length;
-    // let [bal,setBal]=useState(users.users[n-1].amount)
-    // let [dep,setDep]=useState(0)
-    // function handleSubmit(e){
-    //     e.preventDefault()
-    //     let deposit=Number(dep)
-    //     setBal(bal+deposit)
-    // }
-    // users.users[n-1].amount=bal
 
 const [dep,setDep]=useState(0)
 const [usersId,setUserId]=useState();
@@ -34,7 +22,7 @@ const [result , setResult] = useState()
 
     useEffect(()=>{
     const fetchdata=async()=>{
-        await axios.get('http://localhost:3002/data').then((item)=>{setData(item.data)})
+        await axios.get('https://server-90ct.onrender.com/data').then((item)=>{setData(item.data)})
     };fetchdata()
     },[]);
 
@@ -67,7 +55,6 @@ const [result , setResult] = useState()
 
     <div className='containers'>
         <h1 className='depositH'>Deposit</h1>
-        {/* <h2 style={{marginTop:'2%'}}>Balance : {bal} </h2> */}
         <Form noValidate    className='card-outer-cash' onSubmit={handleClick} id="form">
         <Row className="mb-3">
             <Form.Group as={Col} md="13" controlId="validationCustom01">
