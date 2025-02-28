@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
-// import Home from './Home';
 import SubMain from './SubBadMain';
 import Admin from './BadAdmin'
 
@@ -16,7 +15,6 @@ function Login() {
     const [update , setUpdate] =useState(1);
     const [show , setShow] = useState();
     const [all , setAll] =useState();
-    // const [flag , setFlag] = useState(0)
 
 
 const handleSubmit = (event ,index) => {
@@ -29,32 +27,23 @@ const handleSubmit = (event ,index) => {
 
     const updateItem = data.map((item)=> item.email )
     const updateItemTwo = data.map((item)=>  item.password)
-    //     {
-    //     let mail = item.email ;
-    //     let pass=  item.password; 
-    //     console.log(mail)
-    //     console.log(pass)
-    // }
-// );
-    // setUpdate(updateItem)
-    // console.log(update)
+    
     console.log(updateItem)
     console.log(updateItemTwo)
-    axios.get(`http://localhost:3001/login`).then(() => {
+    axios.get(`https://server-90ct.onrender.com/login`).then(() => {
         
         for(let i = 0 ;i < updateItem.length && updateItemTwo.length; i++){
 
             if(emails != '' && passwords !=''){
 
                 if(updateItem[i] === emails && updateItemTwo[i] === passwords ) {
-                    // setFlag(1)
+                    
                     setUpdate(1);  
                     if(emails ==="dhinesh@gmail.com" && passwords === "12345"){
                         setAll(<Admin />)
                         console.log("Admin" , emails,passwords);
                     }
                 } else{
-                    // setFlag(0)
                     setUpdate(0);
                 }
                 
@@ -85,7 +74,7 @@ console.log(data)
 useEffect(() => {
 
     async function axiosProd(){
-        let response =await axios.get('http://localhost:3001/login');
+        let response =await axios.get('https://server-90ct.onrender.com/login');
         let result = response.data;
         setData(result)
     };
@@ -94,7 +83,7 @@ useEffect(() => {
 
 return (<>
     <title>Dhisha Bank | Login Page</title>
-{/* { flag !==1 ? (<> */}
+
     <Form noValidate validated={validated} onSubmit={(index)=>{handleSubmit(index)}} style={{marginTop:'-10%' , marginLeft:'-13%' }} className='card-outer-cash'>
         <Row className="mb-3">
             <Form.Group as={Col} md="13" controlId="validationCustom01">
@@ -134,7 +123,7 @@ return (<>
         </Form>
         <p id="p"></p>
         <p id="pr"></p>
-        {/* </>):console.log('login')        } */}
+
         { show }
         { all }
         
