@@ -24,27 +24,14 @@ import Load from './BadLoading'
 function App() {
 
   const [isLoading, setIsLoading] = useState(true);
-  // const [user, setUser] = useState({
-  //           home:<Navbar.Brand href="#home">Home</Navbar.Brand>,
-  //           register :<Nav.Link href="#register">Register</Nav.Link>,
-  //           deposit :<Nav.Link href="#deposit">Deposit</Nav.Link>,
-  //           cash:<Nav.Link href="#cashback">Cash Back</Nav.Link>,
-  //           all:<Nav.Link href="#alldata">All Data</Nav.Link>
-  // });
+  
 
     setTimeout(() => {
       setIsLoading(false);
   }, 2000);
 
 
-  // useEffect(()=>{
-  //         async function getData() {
-  //             console.log("Loading data....")
-  //             let result = await fetch("./bad.html");
-  //             let response = await(result.text());
-  //             document.getElementById('contents').innerHTML = response
-  //         };getData();
-  //     },[])
+  
 
 
 return (
@@ -104,9 +91,7 @@ Balance:1000}
               }
 
 
-  {/* <div id="contents" style={{marginTop:'100px'}}></div> */}
-    {/* <Bad /> */}
-  {/* <footer style={{marginLeft:'47%',marginTop:'-8%' , fontSize:'25px',padding:'30px',paddingLeft:'20%'}}>&copy;Dhisha Bank @ {date.getFullYear()}</footer> */}
+ 
 </>
 );
 }
