@@ -4,11 +4,7 @@ export default function Loading (){
 
 
     return(<>
-    {/* <div style={{
-        position:'absolute',
-        top:'40%',
-
-    }}> */}
+    
 
     <img src={Logo} alt="" style={{
         width:"100px",
@@ -16,8 +12,6 @@ export default function Loading (){
         top:'40%',
 
     }}/>
-    {/* <span>Dhisha Bank</span> */}
-    {/* </div> */}
 
     </>)
 }
