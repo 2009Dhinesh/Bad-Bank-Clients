@@ -31,7 +31,7 @@ const [result , setResult] = useState()
         const user = data.find(item => item.userid === Number(usersId) && item.password === passwords);
         if (user) {
             const updatedAmount = Number(user.amount) + Number(dep);
-            axios.put(`http://localhost:3002/update/${user._id}`, { amount: updatedAmount })
+            axios.put(`https://server-90ct.onrender.com/update/${user._id}`, { amount: updatedAmount })
                 .then(() => {
                 setResult(`Rs.${dep} Amount Credited to Your Account`);
                 });
