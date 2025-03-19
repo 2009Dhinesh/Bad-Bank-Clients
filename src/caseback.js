@@ -35,7 +35,7 @@ export default function Cashback(){
                 const updatedAmount = Number(user.amount) - Number(dep);
                 axios.put(`https://server-90ct.onrender.com/update/${user._id}`, { amount: updatedAmount })
                     .then(() => {
-                    setResult(`Rs.${dep} Amount Credited to Your Account`);
+                    setResult(`Rs.${dep} Amount Withdraw to Your Account`);
                     });
                 } else {
                 setResult("User or password not found with the provided ID.");
@@ -47,7 +47,7 @@ export default function Cashback(){
 
     return(<>
     <SubMain />
-    <title>Dhisha Bank | Cash back</title>
+    <title>Dhisha Bank | Withdrawal</title>
 
     {isLoading ? (<div
                         style={{
@@ -65,7 +65,7 @@ export default function Cashback(){
         { result } <br />
         {(!data.find(item => item.userid === Number(userId) && item.password === password)) ? <div className="display-inner-span">y</div> : <div className="display-inner-span-two">y</div>}
     </div>
-    <h1 style={{marginTop:'-2%' ,marginLeft:'5%'}}>Cashback</h1>
+    <h1 style={{marginTop:'-2%' ,marginLeft:'5%'}}>Withdrawal</h1>
 
     <div className='containers'>
         <Form noValidate    className='card-outer-cash' onSubmit={handleSubmit} id='form'>
