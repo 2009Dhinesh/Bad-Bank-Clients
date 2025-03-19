@@ -12,7 +12,7 @@ function BasicExample() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#register">Register</Nav.Link>
             <Nav.Link href="#deposit">Deposit</Nav.Link>
-            <Nav.Link href="#cashback">CashBack</Nav.Link>
+            <Nav.Link href="#cashback">Withdrawal</Nav.Link>
             <Nav.Link href="#allData">All Data</Nav.Link>            
           </Nav>
         </Navbar.Collapse>
