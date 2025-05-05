@@ -7,82 +7,92 @@ import Background6 from './images/front-img08.jpg'
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
 import SplashCursor from './BankSplash'
+import { Container, Row, Col } from 'react-bootstrap';
 
+export default function Bad() {
 
+  function handleClickNext() {
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').appendChild(items[0])
+  }
 
+  function handleClickPrev() {
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+  }
 
-export default function Bad(){
+  return (
+    <>
+      <SplashCursor />
+      <Container className="front-container mt-5">
+        <Row className="justify-content-center">
+          <Col xs={12} md={8} lg={10} className="position-relative">
+            <div className="slide">
 
-
-function handleClickNext(){
-        let items = document.querySelectorAll('.item')
-        document.querySelector('.slide').appendChild(items[0])
-    }
-    
-function handleClickPrev(){
-        let items = document.querySelectorAll('.item')
-        document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
-    }
-
-
-    return(<>
-    <SplashCursor />
-    <div class="front-container" style={{marginTop:'3%' , marginLeft:'-5%' }}>
-
-            <div class="slide">
-
-                <div class="item" style={{backgroundImage: `url(${Background4})`}}>
-                    <div class="content">
-                        <div class="name">Dhisha Bank</div>
-                        <div class="des">Bank, an institution that deals in money and its substitutes and provides other money-related services. In its role as a financial intermediary, a bank accepts deposits and makes loans. </div>
-                        <button>See More</button>
-                    </div>
+              <div className="item" style={{ backgroundImage: `url(${Background4})` }}>
+                <div className="content">
+                  <div className="name">Dhisha Bank</div>
+                  <div className="des">
+                    Bank, an institution that deals in money and its substitutes and provides other money-related services. In its role as a financial intermediary, a bank accepts deposits and makes loans.
+                  </div>
+                  <button>See More</button>
                 </div>
-                <div class="item" style={{backgroundImage: `url(${Background1})`}}>
-                    <div class="content">
-                        <div class="name">Services</div>
-                        <div class="des">Banks use content marketing to build trust with customers and improve their brand. Content can include podcasts, articles, calculators, and infographics.                         </div>
-                        <button>See More</button>
-                    </div>
+              </div>
+              <div className="item" style={{ backgroundImage: `url(${Background1})` }}>
+                <div className="content">
+                  <div className="name">Services</div>
+                  <div className="des">
+                    Banks use content marketing to build trust with customers and improve their brand. Content can include podcasts, articles, calculators, and infographics.
+                  </div>
+                  <button>See More</button>
                 </div>
-                <div class="item" style={{backgroundImage: `url(${Background2})`}}>
-                    <div class="content">
-                        <div class="name">Branch</div>
-                        <div class="des">Bank branch content can include information about the services offered, the benefits to the community, and how the branch can help customers. </div>
-                        <button>See More</button>
-                    </div>
+              </div>
+              <div className="item" style={{ backgroundImage: `url(${Background2})` }}>
+                <div className="content">
+                  <div className="name">Branch</div>
+                  <div className="des">
+                    Bank branch content can include information about the services offered, the benefits to the community, and how the branch can help customers.
+                  </div>
+                  <button>See More</button>
                 </div>
-                <div class="item" style={{backgroundImage: `url(${Background3})`}}>
-                    <div class="content">
-                        <div class="name">Employee</div>
-                        <div class="des">Bank employee training includes teaching bank employees the skills, knowledge, and tools they need to perform their jobs. The training can help employees improve their performance, productivity, and job satisfaction. </div>
-                        <button>See More</button>
-                    </div>
+              </div>
+              <div className="item" style={{ backgroundImage: `url(${Background3})` }}>
+                <div className="content">
+                  <div className="name">Employee</div>
+                  <div className="des">
+                    Bank employee training includes teaching bank employees the skills, knowledge, and tools they need to perform their jobs. The training can help employees improve their performance, productivity, and job satisfaction.
+                  </div>
+                  <button>See More</button>
                 </div>
-                <div class="item" style={{backgroundImage: `url(${Background5})`}}>
-                    <div class="content">
-                        <div class="name">ATM</div>
-                        <div class="des">An ATM (Automated Teller Machine) is a computerized device that allows customers to perform banking transactions without needing to visit a bank branch.                         </div>
-                        <button>See More</button>
-                    </div>
+              </div>
+              <div className="item" style={{ backgroundImage: `url(${Background5})` }}>
+                <div className="content">
+                  <div className="name">ATM</div>
+                  <div className="des">
+                    An ATM (Automated Teller Machine) is a computerized device that allows customers to perform banking transactions without needing to visit a bank branch.
+                  </div>
+                  <button>See More</button>
                 </div>
-                <div class="item" style={{backgroundImage: `url(${Background6})`}}>
-                    <div class="content">
-                        <div class="name">About</div>
-                        <div class="des">A bank is a financial institution that accepts deposits and lends money. Banks also offer other services, such as financial management, investment options, and credit cards.  </div>
-                        <button>See More</button>
-                    </div>
+              </div>
+              <div className="item" style={{ backgroundImage: `url(${Background6})` }}>
+                <div className="content">
+                  <div className="name">About</div>
+                  <div className="des">
+                    A bank is a financial institution that accepts deposits and lends money. Banks also offer other services, such as financial management, investment options, and credit cards.
+                  </div>
+                  <button>See More</button>
                 </div>
+              </div>
 
             </div>
 
-            <div class="button">
-                <button class="prev" onClick={ handleClickPrev }><FaArrowLeft /></button>
-                <button class="next" onClick={ handleClickNext }><FaArrowRight /></button>
+            <div className="button">
+              <button className="prev" onClick={handleClickPrev}><FaArrowLeft /></button>
+              <button className="next" onClick={handleClickNext}><FaArrowRight /></button>
             </div>
-
-        </div>
-    
-    
-    </>)
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 }
