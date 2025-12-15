@@ -31,7 +31,7 @@ function Login() {
         const updateItem = data.map((item) => item.email);
         const updateItemTwo = data.map((item) => item.password);
 
-        axios.get(`https://server-90ct.onrender.com/login`).then(() => {
+        axios.post(`https://server-90ct.onrender.com/login`).then(() => {
             for (let i = 0; i < updateItem.length && updateItemTwo.length; i++) {
                 if (emails !== '' && passwords !== '') {
                     if (updateItem[i] === emails && updateItemTwo[i] === passwords) {
@@ -136,3 +136,4 @@ function Login() {
 }
 
 export default Login;
+
