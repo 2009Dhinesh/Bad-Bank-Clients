@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import './badStyle.css'
+import './badStyle.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {HashRouter,Routes,Route} from 'react-router-dom'
+import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
+
 import Register from './register';
 import Deposit from './deposite';
 import Cashback from './caseback';
@@ -15,84 +17,97 @@ import favicon from './images/favicon.png';
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
-import Bad from './BadBank'
+import Bad from './BadBank';
+import Admin from './BadAdmin';
+import SubMain from './SubBadMain';
 import Favicon from "react-favicon";
-import { useState } from 'react';
-import Load from './BadLoading'
-
+import Load from './BadLoading';
 
 function App() {
-
   const [isLoading, setIsLoading] = useState(true);
-  
 
-    setTimeout(() => {
-      setIsLoading(false);
-  }, 2000);
+  // ✅ FIX loading issue
+  useEffect(() => {
+    document.title = "Dhisha Bank";
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
+  return (
+    <>
+      <Favicon url={favicon} />
 
-  
+      {isLoading ? (
+        <div style={{ width: "100px", margin: "auto", marginTop: "20%" }}>
+          <Load />
+        </div>
+      ) : (
+        <HashRouter>
+          {/* ✅ CONTEXT FIX */}
+          <UserContext.Provider
+            value={{
+              users: [
+                {
+                  name: "Dhinesh Waran",
+                  email: "dwaranp@gmail.com",
+                  password: "Dhisha@143",
+                  amount: 1000
+                }
+              ],
+              balance: 1000
+            }}
+          >
 
+            {/* ✅ NAVBAR */}
+            <Navbar expand="lg" className="bg-body-tertiary">
+              <Container>
+                <Navbar.Brand>
+                  <img src={logo} alt="logo" width="70" />{" "}
+                  <span style={{ fontSize: "22px", fontWeight: "bold" }}>
+                    Dhisha Bank
+                  </span>
+                </Navbar.Brand>
 
-return (
-  <>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                  <Nav>
+                    <Button className="me-2" style={{ backgroundColor: '#1aba8a' }}>
+                      <NavLink to="/login" className="nav-link text-white">
+                        Login
+                      </NavLink>
+                    </Button>
 
-  <title>Dhisha Bank</title>
-  <Favicon url={favicon}/>
-  {isLoading ? (<div
-                    style={{
-                        width: "100px",
-                        margin: "auto",
-                    }}
-                >
-                    <Load />
-                </div>) :
-                (<>
-                <Navbar expand="lg" className="bg-body-tertiary" >
-  <p style={{width:'500px',marginLeft:'1%'}}><img src={logo} style={{width:'90px' ,marginTop:'2%'  , marginRight:'2%'}} alt='logo'></img> <h1 style={{position:'absolute' , top:'15%' , left:'8%'}}>Dhisha Bank</h1> </p>
-      <Container >
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            
-            
-            
-          </Nav>
-          <Button style={{backgroundColor:'#1aba8a'}} ><Nav.Link href="#login">LogIn</Nav.Link></Button>
-          <Button style={{backgroundColor:'#1aba8a'}}><Nav.Link href="#signup">SignUp</Nav.Link></Button>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    <HashRouter>
-      <UserContext.Provider value={{"users":[{
-                                            name:"Dhinesh Waran",
-                                            email:"dwaranp@gmail.com",
-                                            password:"Dhisha@143",
-                                            amount:1000}
+                    <Button style={{ backgroundColor: '#1aba8a' }}>
+                      <NavLink to="/signup" className="nav-link text-white">
+                        Signup
+                      </NavLink>
+                    </Button>
+                  </Nav>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
 
-                                            ]}}>
-    <UserContext.Provider value={{"user":[{
-Balance:1000}
+            {/* ✅ ROUTES */}
+            <Routes>
+              <Route path="/" element={<Bad />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/deposit" element={<Deposit />} />
+              <Route path="/cashback" element={<Cashback />} />
+              <Route path="/alldata" element={<Alldata />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
 
-]}}></UserContext.Provider>
-<Routes>
-  <Route path='/' element={<Bad />}></Route>
-  <Route path='/home' element={<Home />}></Route>
-  <Route path='/register' element={<Register></Register>}></Route>
-  <Route path='/deposit' element={<Deposit></Deposit>}></Route>
-  <Route path='/cashback' element={<Cashback></Cashback>}></Route>
-  <Route path='/alldata' element={<Alldata></Alldata>}></Route>
-  <Route path='/login' element={<Login />}></Route>
-  <Route path='/signup' element={<Signup />}></Route>
-</Routes>
-</UserContext.Provider>
-    </HashRouter>
-                </>)
-              }
+              {/* ✅ LOGIN REDIRECT ROUTES */}
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/dashboard" element={<SubMain />} />
+            </Routes>
 
-
- 
-</>
-);
+          </UserContext.Provider>
+        </HashRouter>
+      )}
+    </>
+  );
 }
+
 export default App;
